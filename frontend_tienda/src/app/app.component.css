@@ -1,0 +1,12 @@
+.contenedor {
+  display: flex;
+  gap: 20px; 
+}
+
+app-productos {
+  flex: 2; 
+}
+
+app-ordenes {
+  flex: 1; 
+}

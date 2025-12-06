@@ -1,0 +1,52 @@
+<h2>Crear Orden</h2>
+<form [formGroup]="crearOrdenForm" (ngSubmit)="crearOrden()">
+  <label>Cliente:</label>
+  <input formControlName="cliente" />
+
+  <div formArrayName="productos">
+    <div *ngFor="let producto of productos.controls; let i = index" [formGroupName]="i">
+      <label>Producto ID:</label>
+      <input formControlName="idProducto" type="number" />
+      <label>Cantidad:</label>
+      <input formControlName="cantidad" type="number" />
+    </div>
+  </div>
+
+  <button type="submit">Crear Orden</button>
+</form>
+
+<hr />
+
+<h2>Consultar Órdenes</h2>
+<form [formGroup]="consultarOrdenForm" (ngSubmit)="consultarOrdenes()">
+  <label>Cliente:</label>
+  <input formControlName="cliente" />
+  <label>Fecha Inicio:</label>
+  <input formControlName="fechaInicio" type="date" />
+  <label>Fecha Fin:</label>
+  <input formControlName="fechaFin" type="date" />
+  <button type="submit">Consultar</button>
+</form>
+
+<div *ngIf="ordenes.length > 0">
+  <h3>Resultados:</h3>
+  <table border="1">
+    <tr>
+      <th>ID Orden</th>
+      <th>Cliente</th>
+      <th>Fecha Orden</th>
+      <th>ID Producto</th>
+      <th>Nombre Producto</th>
+      <th>Cantidad</th>
+    </tr>
+    <tr *ngFor="let o of ordenes">
+      <td>{{ o.idOrden }}</td>
+      <td>{{ o.cliente }}</td>
+      <td>{{ o.fechaOrden }}</td>
+      <td>{{ o.idProducto }}</td>
+      <td>{{ o.nombreProducto }}</td> 
+      <td>{{ o.cantidad }}</td>
+    </tr>
+  </table>
+</div>
+

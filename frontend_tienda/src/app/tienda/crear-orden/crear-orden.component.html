@@ -1,0 +1,24 @@
+<h2>Crear Orden</h2>
+
+<mat-form-field appearance="outline">
+  <mat-label>Cliente</mat-label>
+  <input matInput [(ngModel)]="cliente">
+</mat-form-field>
+
+<h3>Productos</h3>
+
+<div *ngFor="let p of productos">
+  {{ p.nombre }} - {{ p.precio | currency }}
+  <button mat-button color="primary" (click)="agregar(p)">Agregar</button>
+</div>
+
+<h3>Productos Seleccionados</h3>
+
+<div *ngFor="let p of productosSeleccionados">
+  {{ p.idProducto }} - Cantidad:
+  <input type="number" [(ngModel)]="p.cantidad">
+</div>
+
+<button mat-raised-button color="accent" (click)="crear()">
+  Crear Orden
+</button>
